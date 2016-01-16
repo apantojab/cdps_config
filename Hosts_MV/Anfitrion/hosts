@@ -1,0 +1,30 @@
+127.0.0.1 localhost
+127.0.1.1       cdps-vm
+10.1.2.14       www.server.cdpsfy.es
+10.1.1.1        www.tracks.cdpsfy.es
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+# VNX BEGIN -- DO NOT EDIT!!!
+
+# BEGIN: p7
+# topology built: dom ene  3 11:57:19 CET 2016
+10.250.0.202 c1
+10.250.0.206 c2
+10.250.0.210 nagios
+10.250.0.214 lb
+10.250.0.218 s1
+10.250.0.222 s2
+10.250.0.226 s3
+10.250.0.230 s4
+10.250.0.234 nas1
+10.250.0.238 nas2
+10.250.0.242 nas3
+# END: p7
+
+# VNX END
