@@ -2,8 +2,8 @@
 # -*- coding: latin-1 -*-
 
 #################################### PRACTICA 7 ######################################
-######################### Autores: Andrea Pantoja Báez  #########################
-#########################          Ángel Sans Muro      #########################
+######################### Autores: Andrea Pantoja Báez  ##############################
+#########################          Ángel Sans Muro      ##############################
 ######################################################################################
 
 # Importamos las bibliotecas que vamos a usar.
@@ -56,7 +56,7 @@ os.system("wget http://idefix.dit.upm.es/download/cdps/p7/p7.tgz")
 os.system("tar xfvz p7.tgz")
 os.chdir("p7")
 os.system("rm -rf p7.xml")
-os.system("wget https://raw.githubusercontent.com/revilla-92/CDPSfy_MV/master/p7.xml")
+os.system("wget https://raw.githubusercontent.com/apantojab/cdps_config/master/p7.xml")
 
 
 print("-----------------------------------------------------------------------")
@@ -107,28 +107,30 @@ if (nagios):
         os.system("lxc-attach -n nagios -- service apache2 restart")
 
         # Ahora cargamos los ficheros de configuracion para los servidores.
-        for n in range (1, 5):
-        	os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/revilla-92/CDPSfy_MV/master/Nagios/s"+str(n)+"_nagios2.cfg -P /etc/nagios3/conf.d")
+        os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Nagios/s1_nagios2.cfg -P /etc/nagios3/conf.d")
+        os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Nagios/s2_nagios2.cfg -P /etc/nagios3/conf.d")
+        os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Nagios/s3_nagios2.cfg -P /etc/nagios3/conf.d")
+        os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Nagios/s4_nagios2.cfg -P /etc/nagios3/conf.d")
 
         # Remplazamos el fichero de hostgroups
         os.system("lxc-attach -n nagios -- rm -rf /etc/nagios3/conf.d/hostgroups_nagios2.cfg")
-        os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/revilla-92/CDPSfy_MV/master/Nagios/hostgroups_nagios2.cfg -P /etc/nagios3/conf.d")
+        os.system("lxc-attach -n nagios -- wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Nagios/hostgroups_nagios2.cfg -P /etc/nagios3/conf.d")
 
         # Reiniciamos nagios3 y apache2
         os.system("lxc-attach -n nagios -- service nagios3 restart")
         os.system("lxc-attach -n nagios -- service apache2 restart")
 
-
+pritn("Nagios funcionando, acceda al navegador para ver la monitorizacion")
 print("-----------------------------------------------------------------------")
 print("----------------- Configuracion de Server Y Tracks --------------------")
 
 # Configuramos el fichero hosts para que redirija las direccionas web.
 os.system("rm -rf /etc/hosts")
-os.system("wget https://raw.githubusercontent.com/revilla-92/CDPSfy_MV/master/Hosts_MV/Anfitrion/hosts -P /etc")
+os.system("wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Hosts_MV/Anfitrion/hosts -P /etc")
 
 # Configuramos el fichero hosts de s4 para que redirija correctamente las direcciones web.
 os.system("lxc-attach -n s4 -- rm -rf /etc/hosts")
-os.system("lxc-attach -n s4 -- wget https://raw.githubusercontent.com/revilla-92/CDPSfy_MV/master/Hosts_MV/s4/hosts -P /etc")
+os.system("lxc-attach -n s4 -- wget https://raw.githubusercontent.com/apantojab/cdps_config/master/Hosts_MV/s4/hosts -P /etc")
 
 # Instalamos node en todos los servidores descargando y ejecutando un script aparte desde cada servidor.
 for n in range (1, 5):
