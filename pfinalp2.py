@@ -2,7 +2,7 @@
 # -*- coding: latin-1 -*-
 
 #################################### PRACTICA 7 ######################################
-######################### Autores: Andrea Pantoja Báez  ##############################
+######################### Autores: Andrea Pantoja Baez  ##############################
 #########################          Ángel Sans Muro      ##############################
 ######################################################################################
 
@@ -120,7 +120,7 @@ if (nagios):
         os.system("lxc-attach -n nagios -- service nagios3 restart")
         os.system("lxc-attach -n nagios -- service apache2 restart")
 
-pritn("Nagios funcionando, acceda al navegador para ver la monitorizacion")
+
 print("-----------------------------------------------------------------------")
 print("----------------- Configuracion de Server Y Tracks --------------------")
 
@@ -141,7 +141,7 @@ for n in range (1, 5):
 # Clonamos y arrancamos la aplicacion Tracks en los servidores.
 for i in range (1, 4):
         os.system("lxc-attach -n s"+str(i)+" -- git clone https://github.com/apantojab/cdps_tracks")
-        comando2 = "'cd /CDPSfy_Tracks/ && node app.js'"
+        comando2 = "'cd /cdps_tracks/ && node app.js'"
         os.system('xterm -hold -e "lxc-attach -n s'+str(i)+' -- sh -c '+comando2+'" &')
 
 # Clonamos y arrancamos la aplicacion Server en el servidor. Asi mismo creamos /data/db para la mejora de MongoDB.
@@ -156,7 +156,7 @@ os.system("lxc-attach -n s4 -- chmod +rwx /data/db")
 # Este comando lo hacemos para ejecutar el comando npm start en una nueva terminal:
 # El comando completo seria: 
 #              
-#                               xterm -hold -e "lxc-attach -n s4 -- sh -c 'cd /CDPSfy_Server/ && npm start'" &
+#                               xterm -hold -e "lxc-attach -n s4 -- sh -c 'cd /cdps_serv/ && npm start'" &
 #####################################################################################################################
 
 print("-----------------------------------------------------------------------")
