@@ -149,15 +149,6 @@ os.system("lxc-attach -n s4 -- git clone https://github.com/apantojab/cdps_serv"
 os.system("lxc-attach -n s4 -- mkdir -p /data/db")
 os.system("lxc-attach -n s4 -- chmod +rwx /data/db")
 
-#####################################################################################################################
-# Deberemos meter en s3 y s4 este comando para arrancar la BBDD: mongod > /dev/null 2>&1 &
-# os.system("lxc-attach -n s4 -- mongod > /dev/null 2>&1 &")
-
-# Este comando lo hacemos para ejecutar el comando npm start en una nueva terminal:
-# El comando completo seria: 
-#              
-#                               xterm -hold -e "lxc-attach -n s4 -- sh -c 'cd /cdps_serv/ && npm start'" &
-#####################################################################################################################
 
 print("-----------------------------------------------------------------------")
 print("------------------- Configurando y Arrancando LB ----------------------")
@@ -171,4 +162,11 @@ print("------------------------ %s seconds ------------------------" % (time.tim
 
 print("-----------------------------------------------------------------------")
 print("------------------------- Script Finalizado ---------------------------")
+
+#####################################################################################################################
+# Deberemos meter s4 este comando para arrancar la BBDD: mongod > /dev/null 2>&1 &
+
+# Este comando lo hacemos para ejecutar el comando npm start :
+#cd /cdps_serv/ && npm start
+#####################################################################################################################
 
